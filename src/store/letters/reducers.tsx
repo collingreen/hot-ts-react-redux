@@ -16,7 +16,7 @@ export function lettersReducer(
 ): LettersState {
   switch (action.type) {
     case 'TOGGLE_LETTER':
-      const update = {} as Partial<LettersState>
+      const update: Partial<LettersState> = {}
       update[action.key] = !state[action.key]
 
       return {
