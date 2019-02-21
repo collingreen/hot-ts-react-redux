@@ -2,7 +2,7 @@ import * as React from 'react'
 import ToggleButton from './ToggleButton'
 
 interface ToggleProps {
-  on: boolean
+  on?: boolean
   onChange: () => void
 }
 
