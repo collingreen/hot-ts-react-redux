@@ -43,12 +43,7 @@ class App extends React.PureComponent<AppProps, {}> {
   }
 }
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    a: state.letters.a,
-    b: state.letters.b,
-  }
-}
+const mapStateToProps = (state: AppState) => state.letters
 
 const mapDispatchToProps = {
   changeSwitch,
