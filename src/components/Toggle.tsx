@@ -7,10 +7,6 @@ interface ToggleProps {
 }
 
 export default class Toggle extends React.PureComponent<ToggleProps, {}> {
-  constructor(props: ToggleProps) {
-    super(props)
-  }
-
   render() {
     return (
       <div className="toggle-container" data-testid="toggle-container">

@@ -14,10 +14,6 @@ interface AppProps {
 }
 
 class App extends React.PureComponent<AppProps, {}> {
-  constructor(props: AppProps) {
-    super(props)
-  }
-
   private onToggleChange(key: 'a' | 'b'): void {
     this.props.changeSwitch(key)
   }
