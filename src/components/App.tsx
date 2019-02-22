@@ -14,10 +14,6 @@ interface AppProps {
 }
 
 class App extends React.PureComponent<AppProps, {}> {
-  constructor(props: AppProps) {
-    super(props)
-  }
-
   private onToggleChange(key: 'a' | 'b'): void {
     this.props.changeSwitch(key)
   }
@@ -43,12 +39,7 @@ class App extends React.PureComponent<AppProps, {}> {
   }
 }
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    a: state.letters.a,
-    b: state.letters.b,
-  }
-}
+const mapStateToProps = (state: AppState) => state.letters
 
 const mapDispatchToProps = {
   changeSwitch,
