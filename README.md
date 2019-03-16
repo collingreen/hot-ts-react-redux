@@ -1,7 +1,7 @@
 # Hot-TS-React-Redux
 
-This is an extremely opinionated project skeleton for single page web apps that is
-focused on a high-velocity developer workflow.
+This is an extremely opinionated project skeleton for single page web apps that
+is focused on a high-velocity developer workflow.
 
 
 ## Highly Opinionated
@@ -11,6 +11,7 @@ focused on a high-velocity developer workflow.
 - [React](https://reactjs.org/) - component-based, declarative views
 - [Redux](https://redux.js.org/) + [React-Redux](https://react-redux.js.org/) -
   state you can reason about + time travel -- use the dev tools
+- [Redux-Saga](https://redux-saga.js.org/) - async redux actions
 - [Prettier](https://www.npmjs.com/package/prettier) and
   [Husky](https://github.com/typicode/husky) to automatically reformat your code
   as a pre-commit hook and to require passing tests before pushing. Do your part
