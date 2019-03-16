@@ -1,8 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
+import createSagaMiddleware from '@redux-saga/core'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { lettersReducer } from './letters/reducers'
+import rootSaga from './sagas'
 
 const rootReducer = combineReducers({
   letters: lettersReducer,
@@ -11,8 +12,8 @@ const rootReducer = combineReducers({
 export type AppState = ReturnType<typeof rootReducer>
 
 export default function configureStore() {
-  const middlewares = [thunkMiddleware]
-  const middleWareEnhancer = applyMiddleware(...middlewares)
+  const sagaMiddleware = createSagaMiddleware()
+  const middleWareEnhancer = applyMiddleware(sagaMiddleware)
 
   var win = window as any
 
@@ -21,8 +22,19 @@ export default function configureStore() {
       rootReducer,
       composeWithDevTools(middleWareEnhancer)
     )
+    win.__sagaTask = sagaMiddleware.run(rootSaga)
+    win.__sagaMiddleware = sagaMiddleware
   } else {
     win.store.replaceReducer(rootReducer)
+
+    // re-import the saga list
+    const newRootSaga = require('./sagas').default
+
+    // cancel any current sagas and attach new ones
+    win.__sagaTask.cancel()
+    win.__sagaTask.toPromise().then(() => {
+      win.__sagaTask = win.__sagaMiddleware.run(newRootSaga)
+    })
   }
 
   return win.store
